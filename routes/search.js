@@ -1,12 +1,13 @@
-const read_fuel_solution = require('../efshelper.core/common/read_fs');
+const FuelSolution = require('../efshelper.core/domain/fuel.solution');
 const SearchService = require('../efshelper.core/services/search');
+const SearchUseCase = require('../efshelper.core/application/search.usecase');
 
 async function searchRoute(request, reply) {
-    let search_phrases = read_fuel_solution(request.body.fuel_solution)
-    const searchService = new SearchService();
-    const result = await searchService.findPlaces(search_phrases);
+    const search_usecase = new SearchUseCase();
+    search_usecase.fuel_solution = new FuelSolution(request.body.fuel_solution);
+    search_usecase.search_service = new SearchService();
     const params = {
-        results: result
+        results: await search_usecase.execute()
     }
     return reply.view("/src/pages/search_results.hbs", params);
 }
