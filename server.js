@@ -29,6 +29,7 @@ fastify.register(require("@fastify/view"), {
   },
 });
 
+fastify.register(require('./plugins/redis-client-provider.js'))
 /**
  * Our home page route
  *
@@ -39,17 +40,6 @@ const homeRoute = require('./routes/home.js')
 fastify.get('/', homeRoute)
 
 const searchRoute = require('./routes/search.js')
-
-fastify.decorateRequest('redisClient', '')
-
-const getRedisClient = require('./efshelper.core/common/getRedisClient.js');
-
-fastify.addHook('preHandler', (req, reply, done) => {
-  getRedisClient().then(redisClient => {
-    req.redisClient = redisClient;
-    done();
-  })
-})
 
 fastify.post('/search', searchRoute)
 
