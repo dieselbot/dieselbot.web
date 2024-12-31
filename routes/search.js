@@ -11,7 +11,7 @@ async function searchRoute(request, reply) {
         results: await search_usecase.execute()
     }
     
-    await request.redisClient.publish(FUEL_STOP_FOUND_CHANNEL, JSON.stringify(params.results));
+    await this.redisClient.publish(FUEL_STOP_FOUND_CHANNEL, JSON.stringify(params.results));
 
     return reply.view("/src/pages/search_results.hbs", params);
 }
