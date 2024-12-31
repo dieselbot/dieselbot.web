@@ -40,6 +40,17 @@ fastify.get('/', homeRoute)
 
 const searchRoute = require('./routes/search.js')
 
+fastify.decorateRequest('redisClient', '')
+
+const getRedisClient = require('./efshelper.core/common/getRedisClient.js');
+
+fastify.addHook('preHandler', (req, reply, done) => {
+  getRedisClient().then(redisClient => {
+    req.redisClient = redisClient;
+    done();
+  })
+})
+
 fastify.post('/search', searchRoute)
 
 // Run the server and report out to the logs
