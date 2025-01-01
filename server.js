@@ -29,7 +29,8 @@ fastify.register(require("@fastify/view"), {
   },
 });
 
-fastify.register(require('./plugins/redis-client-provider.js'))
+//fastify.register(require('./plugins/redis-client-provider.js'));
+
 /**
  * Our home page route
  *
