@@ -10,8 +10,6 @@ async function searchRoute(request, reply) {
     const fuel_stop_service = new FuelStopService();
 
     const results = await search_usecase.execute();
-    
-    // await this.redisClient.publish(FUELSTOP.FOUND, JSON.stringify(results));
 
     fuel_stop_service.post(results);
 
