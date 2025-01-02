@@ -1,17 +1,17 @@
 const FuelSolution = require('../efshelper.core/domain/fuel.solution');
-const SearchService = require('../efshelper.core/services/search');
 const SearchUseCase = require('../efshelper.core/application/search.usecase');
 const FuelStopService = require('../efshelper.core/services/fuelstop');
 
 async function searchRoute(request, reply) {
     const search_usecase = new SearchUseCase();
     search_usecase.fuel_solution = new FuelSolution(request.body.fuel_solution);
-    search_usecase.search_service = new SearchService();
-    const fuel_stop_service = new FuelStopService();
 
     const results = await search_usecase.execute();
 
-    fuel_stop_service.post(results);
+    if(search_usecase.missing_fuel_stops.length > 0){
+        const service = new FuelStopService();
+        service.post(search_usecase.missing_fuel_stops);
+    }
 
     return reply.view("/src/pages/search_results.hbs", { results });
 }
