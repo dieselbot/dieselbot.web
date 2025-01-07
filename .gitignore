@@ -131,3 +131,7 @@ dist
 
 # macOS metadata file
 .DS_Store
+
+# private files
+config
+demo
