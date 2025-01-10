@@ -4,16 +4,22 @@ const FuelStopService = require('../efshelper.core/services/fuelstop');
 
 async function searchRoute(request, reply) {
     const search_usecase = new SearchUseCase(
-        new FuelSolution(request.body.fuel_solution));
+        new FuelSolution(request.body.fuel_solution)
+    );
+    
+    const result = await search_usecase.execute();
 
-    const results = await search_usecase.execute();
-
-    if (search_usecase.missing_fuel_stops.length > 0) {
-        const service = new FuelStopService();
-        service.post(search_usecase.missing_fuel_stops);
+    if(!result.success){
+        console.warn(result.message);
+        return reply.view("/src/pages/search_results.hbs");
     }
 
-    return reply.view("/src/pages/search_results.hbs", { results });
+    if (search_usecase.new_fuel_stops.length > 0) {
+        const service = new FuelStopService();
+        service.post(search_usecase.new_fuel_stops);
+    }
+
+    return reply.view("/src/pages/search_results.hbs", { data: result.data });
 }
 
 module.exports = searchRoute
