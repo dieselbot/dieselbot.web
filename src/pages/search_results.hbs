@@ -12,11 +12,13 @@
   </style>
 </head>
 <body>
-  {{#if results}}
-    {{#each results}}
+  {{#if data}}
+    {{#each data}}
       <p>{{this.display_name}}<br>{{this.address}}</p>
       <br>
     {{/each}}
+  {{else}}
+      <p>no results found</p>
   {{/if}}
 </body>
 </html>
