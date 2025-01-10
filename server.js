@@ -1,9 +1,8 @@
-/**
- * This is the main Node.js server script for your project
- * Check out the two endpoints this back-end API provides in fastify.get and fastify.post below
- */
-
 const path = require("path");
+
+const { check_env } = require("./efshelper.core/common/utils.js");
+
+check_env(path.join(__dirname, './.env'));
 
 // Require the fastify framework and instantiate it
 const fastify = require("fastify")({
@@ -40,7 +39,7 @@ const homeRoute = require('./routes/home.js')
 
 fastify.get('/', homeRoute)
 
-const searchRoute = require('./routes/search.js')
+const searchRoute = require('./routes/search.js');
 
 fastify.post('/search', searchRoute)
 
