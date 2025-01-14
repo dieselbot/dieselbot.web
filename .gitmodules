@@ -1,3 +1,3 @@
-[submodule "efshelper.core"]
-	path = efshelper.core
-	url = https://github.com/efshelper/efshelper.core
+[submodule "core"]
+	path = core
+	url = https://github.com/dieselbot/dieselbot.core

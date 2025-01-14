@@ -1,6 +1,6 @@
-const FuelSolution = require('../efshelper.core/domain/fuel.solution');
-const SearchUseCase = require('../efshelper.core/application/search.usecase');
-const FuelStopService = require('../efshelper.core/services/fuelstop');
+const FuelSolution = require('../core/domain/fuel.solution');
+const SearchUseCase = require('../core/application/search.usecase');
+const FuelStopService = require('../core/services/fuelstop');
 
 async function searchRoute(request, reply) {
     const search_usecase = new SearchUseCase(

@@ -1,6 +1,6 @@
 const path = require("path");
 
-const { check_env } = require("./efshelper.core/common/utils.js");
+const { check_env } = require("./core/common/utils.js");
 
 check_env(path.join(__dirname, './.env'));
 
