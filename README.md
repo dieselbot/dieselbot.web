@@ -1,4 +1,4 @@
-# efshelper.web
+# dieselbot.web
 
 ```sh
 # initialize submodule projects

@@ -1,5 +1,5 @@
 {
-  "name": "efshelper.web",
+  "name": "dieselbot.web",
   "version": "0.1.0",
   "description": "",
   "main": "server.js",
@@ -20,7 +20,7 @@
     "node": "14.x"
   },
   "repository": {
-    "url": "https://github.com/efshelper/efshelper.core"
+    "url": "https://github.com/dieselbot/dieselbot.core"
   },
   "license": "MIT"
 }
