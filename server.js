@@ -1,9 +1,5 @@
 const path = require("path");
 
-const { check_env } = require("./core/common/utils.js");
-
-check_env(path.join(__dirname, './.env'));
-
 // Require the fastify framework and instantiate it
 const fastify = require("fastify")({
   // Set this to true for detailed logging:
