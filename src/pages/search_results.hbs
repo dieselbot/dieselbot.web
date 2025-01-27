@@ -12,13 +12,14 @@
   </style>
 </head>
 <body>
-  {{#if data}}
-    {{#each data}}
-      <p>{{this.display_name}}<br>{{this.address}}</p>
-      <br>
-    {{/each}}
-  {{else}}
-      <p>no results found</p>
+  {{#if fuel_stops}}
+    {{> search_results fuel_stops=fuel_stops}}
+  {{/if}}
+  {{#if fuel_stops_not_found}}
+    {{> no_results_found fuel_stops=fuel_stops_not_found}}
+  {{/if}}
+  {{#if error_message}}
+    {{> invalid_fuel_solution error_message=error_message}}
   {{/if}}
 </body>
 </html>
