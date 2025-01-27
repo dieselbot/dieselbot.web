@@ -4,6 +4,7 @@ const FuelStopService = require('../core/services/fuelstop');
 const { FuelSolutionError } = require('../core/common/errors')
 const Handlebars = require('handlebars');
 const globalEmitter = require('../core/common/global.emitter');
+const { found } = require('../core/common/constants.json')
 const {
     invalid_fuel_solution,
     no_results_found,
@@ -14,7 +15,7 @@ Handlebars.registerPartial('invalid_fuel_solution', invalid_fuel_solution);
 Handlebars.registerPartial('no_results_found', no_results_found);
 Handlebars.registerPartial('search_results', search_results);
 
-globalEmitter.on('insert:unlisted_fuel_stops', unlisted_fuel_stops => {
+globalEmitter.on(found.unlisted_fuel_stops, unlisted_fuel_stops => {
     const service = new FuelStopService();
     return service.post(unlisted_fuel_stops);
 })
