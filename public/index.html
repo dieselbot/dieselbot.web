@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dieselbot</title>
+    <link rel="stylesheet" href="reset.css">
     <style>
         form {
             display: flex;
@@ -13,7 +14,9 @@
 </head>
 <body>
     <form action="/search" method="post">
-        <textarea name="fuel_solution" rows="10" id="fuel_solution"></textarea>
+        <textarea id="fuel_solution" name="fuel_solution" rows="10" 
+        placeholder="Paste your fuel solution here"
+            autofocus required maxlength="400"></textarea>
         <input type="submit" value="Submit" >
     </form>
 </body>
