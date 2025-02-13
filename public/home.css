@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    
+}
+textarea {
+    border: none;
+    outline: 0;
+    padding: 15px;
+    resize: none;
+}
+textarea:-moz-placeholder, /* Firefox 18- */
+textarea::-moz-placeholder, /* Firefox 19+ */
+textarea:-ms-input-placeholder, /* IE 10+ */
+textarea::-webkit-input-placeholder, /* Webkit based */
+textarea::placeholder {
+    color: gainsboro;
+}
+input[type='submit'] {
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+    margin-top: 10px;
+    width: 100%;
+    font-size: large;
+}
