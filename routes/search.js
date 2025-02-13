@@ -13,7 +13,10 @@ const {
 
 Handlebars.registerPartial('invalid_fuel_solution', invalid_fuel_solution);
 Handlebars.registerPartial('no_results_found', no_results_found);
-Handlebars.registerPartial('search_results', search_results);
+
+Handlebars.registerHelper('iszero', function(value){
+    return value == 0;
+})
 
 globalEmitter.on(found.unlisted_fuel_stops, unlisted_fuel_stops => {
     const service = new FuelStopService();
@@ -31,7 +34,7 @@ async function searchRoute(request, reply) {
     let error_parameters = {};
 
     if (result.not_found.length) {
-        fuel_stops_not_found = result.not_found.map(fuel_stop => fuel_stop.toString());
+        fuel_stops_not_found = result.not_found;
     }
 
     if (result.error && (result.error instanceof FuelSolutionError)) {
@@ -42,7 +45,10 @@ async function searchRoute(request, reply) {
         };
     }
 
+    const place_id = (result.data && result.data.length > 0) ? result.data[0].place_id : null;
+
     return reply.view("/src/pages/search_results.hbs", {
+        place_id,
         fuel_stops: result.data,
         fuel_stops_not_found,
         ...error_parameters
