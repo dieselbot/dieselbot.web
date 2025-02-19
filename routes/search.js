@@ -7,8 +7,7 @@ const globalEmitter = require('../core/common/global.emitter');
 const { found } = require('../core/common/constants.json')
 const {
     invalid_fuel_solution,
-    no_results_found,
-    search_results
+    no_results_found
 } = require('../core/templates/index');
 
 Handlebars.registerPartial('invalid_fuel_solution', invalid_fuel_solution);
