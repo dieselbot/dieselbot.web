@@ -32,7 +32,7 @@ async function searchRoute(request, reply) {
     let fuel_stops_not_found = null;
     let error_parameters = {};
 
-    if (result.not_found.length) {
+    if (result.not_found) {
         fuel_stops_not_found = result.not_found;
     }
 
